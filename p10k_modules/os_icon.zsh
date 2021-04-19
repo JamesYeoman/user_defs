@@ -1,0 +1,5 @@
+# OS identifier color.
+typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=$LIGHT
+typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=$DARK
+# Custom icon.
+# typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
