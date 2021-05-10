@@ -19,10 +19,6 @@ function outputToFile() {
         mkdir -p "$(dirname $filePath)"
     fi
 
-    if [[ -f "$filePath" ]]; then
-        mv $filePath "${filePath}.bak"
-    fi
-
     printf "$contents" | tee $filePath &>/dev/null
 }
 
