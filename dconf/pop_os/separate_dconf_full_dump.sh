@@ -2,7 +2,7 @@
 
 function extractDconfPath() {
     local wordRegex='([0-9a-zA-Z\-:]+)'
-    echo "$contents" | awk '
+    echo "$1" | awk '
     /\['$wordRegex'(\/'$wordRegex')*\]/ {
         sub(/\[/, "");
         sub(/\]/, "");
@@ -13,14 +13,7 @@ function extractDconfPath() {
 
 function outputToFile() {
     local contents="$1"
-    local wordRegex='([0-9a-zA-Z\-:]+)'
-    local filePath="$(echo "$contents" | awk '
-    /\['$wordRegex'(\/'$wordRegex')*\]/ {
-        sub(/\[/, "");
-        sub(/\]/, "");
-        print;
-    }
-    ')".conf
+    local filePath="$(extractDconfPath "$contents")".conf
 
     if [[ ! -e "$(dirname $filePath)" ]]; then
         mkdir -p "$(dirname $filePath)"
